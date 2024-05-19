@@ -73,9 +73,14 @@ func documentOpen(context *glsp.Context, params *protocol.DidOpenTextDocumentPar
 }
 
 func documentChange(context *glsp.Context, params *protocol.DidChangeTextDocumentParams) error {
+	d, ok := params.ContentChanges[0].(string)
+	if !ok {
+		return nil
+	}
 	documentMutex.Lock()
 	defer documentMutex.Unlock()
-	document = params.ContentChanges[0].(string)
+
+	document = d
 	return nil
 }
 
