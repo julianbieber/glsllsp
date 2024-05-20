@@ -52,7 +52,7 @@ func (self *FunctionDef) toProtocol() protocol.DocumentSymbol {
 	return protocol.DocumentSymbol{
 		Name:           self.Name,
 		Detail:         new(string),
-		Kind:           protocol.SymbolKindClass,
+		Kind:           protocol.SymbolKindFunction,
 		Tags:           []protocol.SymbolTag{},
 		Deprecated:     nil,
 		Range:          self.Range,
